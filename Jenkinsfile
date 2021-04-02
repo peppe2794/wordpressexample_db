@@ -28,7 +28,7 @@ pipeline {
     }
     stage('Static Security Assesment'){
       steps{
-        sh 'docker run --name ${IMAGE} -t -d $registry:${DOCKER_TAG} && sleep 10'
+        sh 'docker run --name ${IMAGE} -t -d $registry:${DOCKER_TAG} && sleep 10 && docker ps'
         sh 'inspec exec https://github.com/dev-sec/linux-baseline -t docker://${IMAGE} --reporter html:Results/Linux_Baseline_report.html --chef-license=accept || true'
         sh 'inspec exec https://github.com/dev-sec/mysql-baseline -t docker://${IMAGE} --reporter html:Results/Mysql_Baseline_report.html --chef-license=accept || true'
         sh 'docker stop ${IMAGE}'
