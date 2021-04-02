@@ -55,7 +55,7 @@ pipeline {
     post{
     success{
       echo 'Post success'
-      build job: 'SecDevOpsFlowTemplate_WordpressExample', parameters: [string (value: "peppe2794/"+"$IMAGE"+":"+"$DOCKER_TAG", description: 'Parametro', name: 'WP')]
+      build job: 'SecDevOpsFlowTemplate_WordpressExample', parameters: [string (value: "peppe2794/"+"$IMAGE"+":"+"$DOCKER_TAG", description: 'Parametro', name: 'WP_DB')]
     }
   }
 }
